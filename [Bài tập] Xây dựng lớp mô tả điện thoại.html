@@ -122,25 +122,25 @@
             receiveMsg(msg) {
                 this.inbox.push(msg)
             }
-            light() {
-                if (this.status) {
-                    alert("Lighting");
-                } else {
-                    alert("Not lighting");
-                }
-            }
-
-            turnOn() {
-                this.status = true;
-            }
-
-            turnOff() {
-                this.status = false;
-            }
+            // phone() {
+            //     if (this.status) {
+            //         alert("Lighting");
+            //     } else {
+            //         alert("Not lighting");
+            //     }
+            // }
+            //
+            // turnOn() {
+            //     this.status = true;
+            // }
+            //
+            // turnOff() {
+            //     this.status = false;
+            // }
         }
         let iphone = new Mobile("Iphone Pro Max 11");
         let oppo = new Mobile("Oppo Reno");
-        iphone.turnOff();
+
 
         display();
         function sendMsg(mobile1,mobile2) {
