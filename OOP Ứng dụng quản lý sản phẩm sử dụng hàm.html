@@ -9,11 +9,13 @@
             border-collapse: collapse;
             width: 100%;
         }
+
         td, th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
+
         tr:nth-child() {
             background-color: #dddddd;
         }
@@ -25,76 +27,71 @@
 <input id="addColor" type="text" placeholder="Color">
 <input id="addPrice" type="text" placeholder="Price">
 <input id="addTextarea" type="text" placeholder="Textarea">
-<button onlick="addProduct()">Add</button>
+<button onlick="addButton()">Add</button>
 
 <h1>Display All Product</h1>
 
-<table id="listProduct" ></table>
+<table id="listProduct"></table>
 
 <script>
-    let products = [];
-   let ListProducts = function (product,color, price, textarea) {
-       this.product = product;
-       this.color = color;
-       this.price = price;
-       this.textarea = textarea;
 
-       this.getProduct = function () {
-           return this.product;
-       }
-       this.getColor = function () {
-           return this.color;
-       }
-       this.getPrice = function () {
-           return this.price;
-       }
-       this.getTextArea = function () {
-           return this.textarea;
-       }
+    class ListProduct {
+        constructor(product, color, price, textarea) {
+            this.product = product;
+            this.color = color;
+            this.price = price;
+            this.textarea = textarea;
+        }
 
-       this.display = function () {
-           let str = "";
-           str += `<tr><td>${this.product} </td></tr>`
-           str += `<td>${this.color} </td>`
-           str += `<td>${this.price} </td>`
-           str += `<td>${this.textarea} </td>`
-           str += `<button onclick="editProduct()">Edit</button><button onclick="deleteProduct()">Delete</button>`
+        getProduct() {
+            return this.product;
+        }
 
-           return str;
-       }
-       // this.addProduct =  function () {
-       //     listproduct.push(this.product, this.color, this.price, this.textarea)
-       //      this.display();
-       // }
+        getColor() {
+            return this.color;
+        }
 
-   }
-        let listproduct = new ListProducts("Apple", "Red", "3.000.000", "Còn hàng");
-   let product = listproduct.getProduct()
-   let color = listproduct.getColor()
-   let price = listproduct.getPrice()
-   let textarea = listproduct.getTextArea()
-   let display = listproduct.display()
-    // let addProduct = listproduct.addProduct()
-   function addProduct() {
-        let product = document.getElementById("addProduct").value;
-        let color = document.getElementById("addColor").value;
-        let price = document.getElementById("addPrice").value;
-        let textarea = document.getElementById("addTextarea").value;
-       products.push(listproduct)
-   }
+        getPrice() {
+            return this.price;
+        }
 
+        getTextarea() {
+            return this.textarea
+        }
+    }
 
+    let listProduct = new ListProduct("Iphone 6", "Gray", "10.000.000", "New")
+    let product = listProduct.getProduct();
+    let color = listProduct.getColor();
+    let price = listProduct.getPrice();
+    let textarea = listProduct.getTextarea();
 
-   document.write(display);
+    function display() {
+        let str = "";
+        str += `<td>${product}</td>`
+        str += `<td>${color}</td>`
+        str += `<td>${price}</td>`
+        str += `<td>${textarea}</td>`
+        str += `<td><button onclick="editProduct()">Edit</button></td><td><button onclick="deleteProduct()">Delete</button></td>`
+
+        document.getElementById("listProduct").innerHTML = str;
+    }
+    function addButton() {
+        let product1 = document.getElementById("addProduct").value;
+        let color1 = document.getElementById("addColor").value;
+        let price1 = document.getElementById("addPrice").value;
+        let textarea1 = document.getElementById("addTextarea").value;
+
+        listProduct.push(product1,color1,price1,textarea1)
+        display()
+    }
 
 
 
 
 
 
-
-
-
+    display()
 </script>
 
 </body>
