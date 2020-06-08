@@ -4,46 +4,24 @@
     <meta charset="UTF-8">
     <title>Phát triển game lái xe</title>
 </head>
-<body>
+<body onload="docReady()">
 <canvas id="myCanvas" width="600px" height="550px" style="border: 1px solid #d3d3d3;"></canvas>
 
 <script>
 
-    function Car() {
-        this.show = function (ctx) {
-            let image = new Image();
-            let xPosition = this.xPosition;
-            let yPosition = this.yPosition;
-            image.onload = function () {
-                ctx.drawImage(image, xPosition, yPosition);
-            };
-            image.src = 'car.png' + this.image;
-        }
+    let canvas = document.getElementById("myCanvas");
+    let context = canvas.getContext("2d");
+    let imageObj = new Image();
+    imageObj.onload = function () {
+        context.drawImage(imageObj, 300, 450)
     }
+    imageObj.src = "car2.png";
 
-    function createCar() {
-        let ctx = document.getElementById("myCanvas").getContext("2d");
-        let x = Math.random() * window.innerWidth;
-        let y = Math.random() * window.innerHeight;
-        let car= new Car(image.src,x,y);
-        ctx.beginPath();
-        ctx.src(car.image,car.x, car.y);
-        ctx.fillStyle = color;
-        ctx.fill();
-
-    }
-    createCar()
 
 
 
 
 </script>
-
-
-
-
-
-
 
 
 </body>
